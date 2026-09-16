@@ -208,7 +208,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       category: "Social",
       icon: <ExternalLink className="w-4 h-4 text-slate-400" />,
       action: () => {
-        window.open("https://linkedin.com", "_blank");
+        window.open("https://www.linkedin.com/in/nairykumar", "_blank");
         onClose();
       }
     }
@@ -318,13 +318,13 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
         </div>
 
         {/* Footer shortcuts helper */}
-        <div className="flex items-center justify-between px-4 py-2.5 bg-slate-950/60 border-t border-slate-800/80 text-[11px] text-slate-500 font-mono">
+        <div className="flex flex-wrap items-center justify-between px-4 py-2.5 bg-slate-950/60 border-t border-slate-800/80 text-[10px] sm:text-[11px] text-slate-500 font-mono gap-2">
           <div className="flex items-center gap-3">
             <span>↑↓ Navigate</span>
             <span>↵ Select</span>
             <span>Esc Close</span>
           </div>
-          <span className="text-slate-400">Narendra • Portfolio Command</span>
+          <span className="text-slate-400 hidden sm:inline">Narendra • Portfolio Command</span>
         </div>
       </div>
     </div>

@@ -5,12 +5,11 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CommandPalette } from "@/components/ui/CommandPalette";
 import { LivingEnvironment } from "@/components/ui/LivingEnvironment";
-import { JourneyPath } from "@/components/ui/JourneyPath";
+import { AmbientAudioPlayer } from "@/components/ui/AmbientAudioPlayer";
 import { Hero } from "@/components/sections/Hero";
-import { SelectedWork } from "@/components/sections/SelectedWork";
-import { ArchitectureFlow } from "@/components/sections/ArchitectureFlow";
+import { BentoGrid } from "@/components/sections/BentoGrid";
+import { Projects3D } from "@/components/sections/Projects3D";
 import { Experience } from "@/components/sections/Experience";
-import { Philosophy } from "@/components/sections/Philosophy";
 import { Credentials } from "@/components/sections/Credentials";
 import { Contact } from "@/components/sections/Contact";
 
@@ -29,8 +28,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#090a0f] text-slate-100 relative selection:bg-blue-600/30 selection:text-white">
-      {/* Living Atmospheric Environment Layer */}
+    <div className="min-h-screen flex flex-col bg-[#000319] text-white relative selection:bg-[#00ff99]/30 selection:text-white">
+      {/* Subtle Living Atmospheric Particles */}
       <LivingEnvironment />
 
       {/* Global Command Palette */}
@@ -39,18 +38,17 @@ export default function Home() {
         onClose={() => setCommandPaletteOpen(false)}
       />
 
+      {/* Floating Ambient Music Player (Matching radnaabazar.com) */}
+      <AmbientAudioPlayer />
+
       {/* Top Navbar */}
       <Navbar onOpenCommandPalette={() => setCommandPaletteOpen(true)} />
 
-      {/* Continuous Engineering Journey Sections */}
+      {/* Main Sections */}
       <main className="flex-1 relative">
-        {/* Living Continuous Journey Road & Scroll-Driven Traveller */}
-        <JourneyPath />
-
         <Hero />
-        <SelectedWork />
-        <ArchitectureFlow />
-        <Philosophy />
+        <BentoGrid />
+        <Projects3D />
         <Experience />
         <Credentials />
         <Contact />
@@ -61,3 +59,4 @@ export default function Home() {
     </div>
   );
 }
+

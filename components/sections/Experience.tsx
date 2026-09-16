@@ -78,27 +78,19 @@ export function Experience() {
   const activeMilestone = careerMilestones[activeYearIndex];
 
   return (
-    <section id="experience" className="pt-10 pb-16 md:pt-14 md:pb-20 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header with Milestone 04 Anchor */}
-        <div id="path-anchor-experience" className="max-w-2xl mb-6 md:mb-7 scroll-mt-28">
-          <div className="flex items-center gap-3 mb-2.5">
-            <div
-              id="path-anchor-milestone-04"
-              className="relative flex items-center justify-center w-5 h-5 rounded-full bg-blue-950 border border-blue-500/60 shadow-sm shadow-blue-500/50 shrink-0"
-            >
-              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-            </div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-mono text-xs tracking-wider uppercase">
-              <Briefcase className="w-3.5 h-3.5" />
-              <span>MILESTONE 04 · PROFESSIONAL TIMELINE</span>
-            </div>
+    <section id="experience" className="py-20 relative bg-[#000319] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.1] text-xs font-mono text-[#00ff99] mb-3">
+            <Briefcase className="w-3.5 h-3.5 text-[#00ff99]" />
+            <span>JOURNEY REPORT</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-2.5">
-            Where I&apos;ve Built
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white">
+            Where I&apos;ve <span className="text-[#00ff99]">Built &amp; Scaled</span>
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-normal">
-            The journey path becomes an operational career timeline. Professional software engineering experience delivering enterprise backend systems and resilient full-stack applications.
+          <p className="mt-3 text-sm sm:text-base text-white/60 max-w-xl mx-auto">
+            Associate Software Engineer at Hexaware Technologies with 1+ years of professional experience delivering enterprise backend systems and resilient full-stack applications.
           </p>
         </div>
 
@@ -150,9 +142,9 @@ export function Experience() {
             </div>
 
             {/* Dynamic Milestone Highlight */}
-            <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800/60 text-xs font-mono flex items-center justify-between">
-              <span className="text-slate-300 font-semibold">{activeMilestone.role}</span>
-              <span className="text-slate-500 text-[11px] hidden sm:inline">{activeMilestone.highlight}</span>
+            <div className="p-3 sm:p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/60 text-xs font-mono flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+              <span className="text-slate-200 font-semibold">{activeMilestone.role}</span>
+              <span className="text-slate-400 text-[11px] leading-snug">{activeMilestone.highlight}</span>
             </div>
           </div>
 
@@ -221,7 +213,7 @@ export function Experience() {
                       <span className="text-[10px] font-mono text-slate-500">{cap.number}</span>
                       {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />}
                     </div>
-                    <div className="text-xs font-semibold text-white tracking-tight line-clamp-1">
+                    <div className="text-[11px] sm:text-xs font-semibold text-white tracking-tight line-clamp-2 min-h-[32px]">
                       {cap.label}
                     </div>
                   </button>

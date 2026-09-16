@@ -41,27 +41,18 @@ export function Credentials() {
   ];
 
   return (
-    <section id="achievements" className="pt-10 pb-16 md:pt-14 md:pb-20 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header with Milestone 05 Anchor */}
-        <div id="path-anchor-credentials" className="max-w-3xl mb-6 md:mb-7 scroll-mt-28">
-          <div className="flex items-center gap-3 mb-2.5">
-            <div
-              id="path-anchor-milestone-05"
-              className="relative flex items-center justify-center w-5 h-5 rounded-full bg-amber-950 border border-amber-500/60 shadow-sm shadow-amber-500/50 shrink-0"
-            >
-              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-            </div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs tracking-wider uppercase">
-              <Award className="w-3.5 h-3.5" />
-              <span>MILESTONE 05 · VERIFIED FOUNDATIONS</span>
-            </div>
+    <section id="achievements" className="py-20 relative bg-[#000319] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.1] text-xs font-mono text-[#00ff99] mb-3">
+            <Award className="w-3.5 h-3.5 text-[#00ff99]" />
+            <span>ACADEMIC & ENTERPRISE MERIT</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-2.5">
-            Honors & Academic Foundation
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white">
+            Honors &amp; <span className="text-[#00ff99]">Education</span>
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-normal">
-            Enterprise recognition, merit scholarships, and rigorous academic foundation in computing and systems engineering.
+          <p className="mt-3 text-sm sm:text-base text-white/60 max-w-xl mx-auto">
+            Enterprise innovation awards, full merit scholarship, and foundational engineering education.
           </p>
         </div>
 

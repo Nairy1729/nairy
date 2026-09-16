@@ -24,30 +24,22 @@ export function Contact() {
 
           <div className="max-w-4xl relative z-10 space-y-8">
             {/* System Status Pill & Milestone 06 */}
-            <div className="flex flex-wrap items-center gap-3">
-              <div className="flex items-center gap-2.5">
-                <div
-                  id="path-anchor-milestone-06"
-                  className="relative flex items-center justify-center w-5 h-5 rounded-full bg-cyan-950 border border-cyan-500/60 shadow-sm shadow-cyan-500/50 shrink-0"
-                >
-                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                </div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-xs tracking-wider uppercase">
-                  <Mail className="w-3.5 h-3.5" />
-                  <span>MILESTONE 06 · DIALOGUE & COLLABORATION TERMINAL</span>
-                </div>
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.1] text-[#00ff99] font-mono text-xs tracking-wider uppercase shrink-0">
+                <Mail className="w-3.5 h-3.5 text-[#00ff99]" />
+                <span>DIRECT REACH</span>
               </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/60 text-xs font-mono text-emerald-400">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>ACTIVE · OPEN FOR SOFTWARE ENGINEERING ROLES</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-2xl sm:rounded-full bg-[#00ff99]/10 border border-[#00ff99]/30 text-[10px] min-[420px]:text-xs font-mono text-[#00ff99] max-w-full">
+                <span className="w-2 h-2 rounded-full bg-[#00ff99] animate-ping shrink-0" />
+                <span className="leading-snug">OPEN FOR HIGH-IMPACT SOFTWARE ENGINEERING ROLES</span>
               </div>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
-              Let&apos;s build something enduring.
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
+              Ready to take your <span className="text-[#00ff99]">digital presence</span> &amp; architecture to the next level?
             </h2>
 
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl">
+            <p className="text-base sm:text-lg text-white/70 leading-relaxed font-normal max-w-2xl">
               Whether you are architecting a high-throughput enterprise backend, securing distributed REST APIs, or creating a refined full-stack digital product—I bring production discipline, clean architecture, and product taste to the table.
             </p>
 
@@ -55,34 +47,34 @@ export function Contact() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
               <a
                 href="mailto:narendra.kumarvg2@gmail.com"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium transition-all shadow-lg shadow-blue-600/25 cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#00ff99] hover:bg-[#00e68a] text-[#000319] text-sm font-semibold tracking-wide transition-all shadow-lg shadow-[#00ff99]/20 cursor-pointer"
               >
                 <Mail className="w-4 h-4 shrink-0" />
-                <span>Email Narendra</span>
+                <span>Let&apos;s get in touch</span>
               </a>
 
               <a
                 href="/Narendra_Resume.pdf"
                 download
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-cyan-950/80 hover:bg-cyan-900/90 text-cyan-300 border border-cyan-500/50 text-sm font-mono font-semibold transition-all shadow-lg shadow-cyan-950/50 cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] text-white border border-white/[0.15] hover:border-[#00ff99]/50 text-sm font-semibold transition-all cursor-pointer"
                 title="Download Verified Resume PDF"
               >
-                <FileDown className="w-4 h-4 text-cyan-400 shrink-0" />
+                <FileDown className="w-4 h-4 text-[#00ff99] shrink-0" />
                 <span>Download Resume (PDF)</span>
               </a>
 
               <button
                 onClick={copyEmail}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-sm font-mono text-slate-300 hover:text-white transition-all cursor-pointer shadow-sm"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-white/[0.03] border border-white/[0.1] hover:border-[#00ff99]/50 text-sm font-mono text-white/80 hover:text-white transition-all cursor-pointer shadow-sm"
               >
                 {copied ? (
                   <>
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span className="text-emerald-400 font-semibold">Copied to Clipboard</span>
+                    <Check className="w-4 h-4 text-[#00ff99] shrink-0" />
+                    <span className="text-[#00ff99] font-semibold">Copied to Clipboard</span>
                   </>
                 ) : (
                   <>
-                    <Copy className="w-4 h-4 text-slate-400 shrink-0" />
+                    <Copy className="w-4 h-4 text-[#00ff99] shrink-0" />
                     <span className="truncate">narendra.kumarvg2@gmail.com</span>
                   </>
                 )}
@@ -90,9 +82,9 @@ export function Contact() {
             </div>
 
             {/* Verified External Profiles */}
-            <div className="flex items-center gap-6 pt-2 text-sm font-mono text-slate-400">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-2 text-sm font-mono text-slate-400">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/nairykumar"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 hover:text-white transition-colors"
@@ -101,7 +93,7 @@ export function Contact() {
                 <span>LinkedIn</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-slate-600" />
               </a>
-              <span>•</span>
+              <span className="hidden min-[360px]:inline text-slate-600">•</span>
               <a
                 href="https://github.com/Nairy1729"
                 target="_blank"
@@ -121,8 +113,8 @@ export function Contact() {
                 <span>Operational System Status Docket</span>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono">
-                <div className="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80">
+              <div className="grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-xs font-mono">
+                <div className="p-3.5 sm:p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80">
                   <div className="text-slate-500 text-[10px] uppercase mb-1">Status</div>
                   <div className="text-emerald-400 font-semibold flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
@@ -130,17 +122,17 @@ export function Contact() {
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80">
+                <div className="p-3.5 sm:p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80">
                   <div className="text-slate-500 text-[10px] uppercase mb-1">Primary Core</div>
                   <div className="text-slate-200 font-semibold">Java • Spring Boot</div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80">
+                <div className="p-3.5 sm:p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80">
                   <div className="text-slate-500 text-[10px] uppercase mb-1">Client Tier</div>
                   <div className="text-slate-200 font-semibold">React.js • Next.js</div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80">
+                <div className="p-3.5 sm:p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80">
                   <div className="text-slate-500 text-[10px] uppercase mb-1">Location</div>
                   <div className="text-slate-200 font-semibold">India (Remote/Hybrid)</div>
                 </div>

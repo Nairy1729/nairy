@@ -1,24 +1,30 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import {
-  ArrowRight,
+  ChevronRight,
+  Mail,
   Copy,
   Check,
-  Compass,
-  Layers,
-  Cpu,
-  ShieldCheck,
-  Briefcase,
-  Award,
-  Mail,
   Code2,
+  Terminal,
+  Cpu,
+  Layers,
   Sparkles
 } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
 
 export function Hero() {
   const [copied, setCopied] = useState(false);
+  const [greetingIndex, setGreetingIndex] = useState(0);
+
+  const greetings = [
+    "glad you’re here 🌌",
+    "systems architect ⚙️",
+    "full-stack builder 🚀",
+    "open for collaboration 🤝"
+  ];
 
   const copyEmail = () => {
     navigator.clipboard.writeText("narendra.kumarvg2@gmail.com");
@@ -26,222 +32,188 @@ export function Hero() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+  const cycleGreeting = () => {
+    setGreetingIndex((prev) => (prev + 1) % greetings.length);
   };
 
-  const journeyMilestones = [
-    {
-      step: "01",
-      title: "Products & Experiences",
-      desc: "WordDrop (Android) & Another Life (Cinematic)",
-      icon: <Layers className="w-3.5 h-3.5 text-cyan-400" />,
-      targetId: "work"
-    },
-    {
-      step: "02",
-      title: "System Architecture",
-      desc: "Spring Boot, JWT & Distributed Persistence",
-      icon: <Cpu className="w-3.5 h-3.5 text-blue-400" />,
-      targetId: "architecture"
-    },
-    {
-      step: "03",
-      title: "Engineering Axioms",
-      desc: "Clean Boundaries, Security by Design, Reliability",
-      icon: <ShieldCheck className="w-3.5 h-3.5 text-indigo-400" />,
-      targetId: "about"
-    },
-    {
-      step: "04",
-      title: "Professional Experience",
-      desc: "Hexaware Enterprise Backend Engineering",
-      icon: <Briefcase className="w-3.5 h-3.5 text-emerald-400" />,
-      targetId: "experience"
-    },
-    {
-      step: "05",
-      title: "Credentials & Foundations",
-      desc: "Innovative Champion Award & 100% Scholarship",
-      icon: <Award className="w-3.5 h-3.5 text-amber-400" />,
-      targetId: "achievements"
-    },
-    {
-      step: "06",
-      title: "Resolution & Contact",
-      desc: "Direct Technical Collaboration & Ingress",
-      icon: <Mail className="w-3.5 h-3.5 text-cyan-300" />,
-      targetId: "contact"
-    }
-  ];
-
   return (
-    <section
-      id="hero"
-      className="relative min-h-[85vh] flex flex-col justify-center pt-24 sm:pt-28 pb-10 overflow-hidden"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        {/* Departure Origin Badge */}
-        <div className="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 text-[10px] sm:text-[11px] font-mono text-slate-300 mb-6 backdrop-blur-md max-w-full">
-          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shadow-sm shadow-cyan-400/80 shrink-0" />
-          <span className="font-semibold text-white">JOURNEY ORIGIN</span>
-          <span className="text-slate-600">·</span>
-          <span className="text-cyan-300">Hexaware Technologies</span>
-          <span className="text-slate-600 hidden xs:inline">·</span>
-          <span className="text-slate-400 hidden xs:inline">Associate Software Engineer</span>
-        </div>
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-24 pb-16">
+      {/* Background Grid with Radial Gradient Mask */}
+      <div className="absolute inset-0 bg-[#000319] bg-grid-pattern pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#000319] via-transparent to-[#000319] pointer-events-none z-0" />
+      <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-[#000319] [mask-image:radial-gradient(ellipse_at_center,transparent_25%,black)] z-0" />
 
-        {/* High-Density Editorial Viewport Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Left (55%): Typography, Identity & Core Actions */}
-          <div className="lg:col-span-7 space-y-5">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950/40 border border-blue-800/40 text-[10px] sm:text-[11px] font-mono text-blue-300">
-              <Code2 className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-              <span>JAVA FULL STACK DEVELOPER · SOFTWARE ENGINEER</span>
+      {/* Main Container */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div className="flex flex-col xl:flex-row items-center justify-between gap-12 xl:gap-16 pt-8 pb-12">
+          
+          {/* Left Column: Typography & CTAs */}
+          <div className="text-center xl:text-left order-2 xl:order-none max-w-2xl">
+            {/* Tagline / Subtitle */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.1] text-xs font-mono text-[#00ff99] mb-6 tracking-wide">
+              <span className="w-2 h-2 rounded-full bg-[#00ff99] animate-pulse" />
+              <span>Java Full Stack Developer · Associate Software Engineer</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
-              Engineering real products from backend architecture to{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-300">
-                polished experiences.
+            {/* Headline with Signature Hover Reveal */}
+            <h1 className="text-4xl sm:text-6xl xl:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
+              <span>Hello I&apos;m</span>{" "}
+              <br />
+              <span
+                onClick={cycleGreeting}
+                title="Click to cycle status"
+                className="text-[#00ff99] relative inline-block group cursor-pointer overflow-hidden rounded-md px-1 -mx-1"
+              >
+                <span className="relative z-10 inline-block transition-colors duration-500 group-hover:text-[#000319]">
+                  Narendra
+                </span>
+                <span className="absolute inset-0 bg-[#00ff99] z-0 transition-transform duration-500 ease-out scale-x-0 group-hover:scale-x-100 origin-left" />
               </span>
             </h1>
 
-            <p className="text-sm sm:text-base lg:text-lg text-slate-400 max-w-xl leading-relaxed font-normal">
-              Specializing in <strong className="text-slate-200 font-semibold">Java, Spring Boot, PostgreSQL, and React</strong>. Currently engineering enterprise backend applications at <strong className="text-slate-200 font-semibold">Hexaware Technologies</strong> and publishing consumer digital products.
+            {/* Value Proposition */}
+            <p className="max-w-xl text-base sm:text-lg text-white/75 leading-relaxed mb-8">
+              Associate Software Engineer at Hexaware Technologies with 1+ years of professional experience designing robust enterprise REST APIs, Spring Boot microservices, secure JWT auth, and dynamic React frontends.
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
-              <a href="#work" className="w-full sm:w-auto">
-                <Button
-                  variant="primary"
-                  size="lg"
-                  icon={<ArrowRight className="w-4 h-4" />}
-                  className="w-full sm:w-auto font-medium shadow-lg shadow-blue-600/25 cursor-pointer justify-center"
-                >
-                  Explore Engineering Journey
-                </Button>
-              </a>
-
-              <a href="#architecture" className="w-full sm:w-auto">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="w-full sm:w-auto font-medium text-slate-300 cursor-pointer justify-center"
-                >
-                  System Architecture
-                </Button>
-              </a>
-
-              <button
-                onClick={copyEmail}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-xs font-mono text-slate-300 hover:text-white transition-all cursor-pointer"
-                title="Click to copy verified email address"
+            {/* CTAs & Social Links */}
+            <div className="flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-4 sm:gap-5 mb-6 w-full">
+              {/* View CV / Resume Button */}
+              <a
+                href="/Narendra_Resume.pdf"
+                download
+                className="group w-full sm:w-auto h-[52px] px-8 rounded-full border border-[#00ff99] text-[#00ff99] hover:bg-[#00ff99] hover:text-[#000319] text-xs sm:text-sm font-semibold uppercase tracking-[2px] transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-[#00ff99]/15 cursor-pointer"
               >
-                {copied ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span className="text-emerald-400 font-medium">Copied Email</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                    <span className="truncate">narendra.kumarvg2@gmail.com</span>
-                  </>
-                )}
-              </button>
-            </div>
+                <span>View CV (PDF)</span>
+                <ChevronRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </a>
 
-            {/* Quick Metrics Bar */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-5 border-t border-slate-800/80 max-w-lg text-xs font-mono">
-              <div>
-                <div className="text-slate-500 text-[10px] uppercase font-medium">Primary Focus</div>
-                <div className="text-slate-200 font-semibold mt-0.5">Java & Spring Boot</div>
-              </div>
-              <div>
-                <div className="text-slate-500 text-[10px] uppercase font-medium">Enterprise</div>
-                <div className="text-slate-200 font-semibold mt-0.5">Hexaware Tech</div>
-              </div>
-              <div className="col-span-2 sm:col-span-1">
-                <div className="text-slate-500 text-[10px] uppercase font-medium">Published Works</div>
-                <div className="text-cyan-400 font-semibold mt-0.5">WordDrop + Life</div>
+              {/* Social Buttons */}
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://github.com/Nairy1729"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-11 h-11 rounded-full border border-white/[0.15] hover:border-[#00ff99] flex items-center justify-center text-white/80 hover:text-[#00ff99] hover:bg-white/[0.05] transition-all duration-300"
+                  aria-label="GitHub"
+                >
+                  <GithubIcon className="w-4 h-4" />
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/nairykumar"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-11 h-11 rounded-full border border-white/[0.15] hover:border-[#00ff99] flex items-center justify-center text-white/80 hover:text-[#00ff99] hover:bg-white/[0.05] transition-all duration-300"
+                  aria-label="LinkedIn"
+                >
+                  <LinkedinIcon className="w-4 h-4" />
+                </a>
+
+                <button
+                  onClick={copyEmail}
+                  className="w-11 h-11 rounded-full border border-white/[0.15] hover:border-[#00ff99] flex items-center justify-center text-white/80 hover:text-[#00ff99] hover:bg-white/[0.05] transition-all duration-300 cursor-pointer relative group"
+                  aria-label="Copy Email"
+                  title={copied ? "Email Copied!" : "Copy Email"}
+                >
+                  {copied ? <Check className="w-4 h-4 text-[#00ff99]" /> : <Mail className="w-4 h-4" />}
+                  <span className="absolute -top-8 px-2 py-0.5 rounded bg-black/80 text-[10px] text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                    {copied ? "Copied!" : "Copy Email"}
+                  </span>
+                </button>
               </div>
             </div>
           </div>
 
-          {/* Right (45%): Authentic Journey Departure Stage & Route Manifest */}
-          <div className="lg:col-span-5">
-            <div className="rounded-3xl border border-slate-800/90 bg-slate-950/70 p-5 sm:p-7 backdrop-blur-xl shadow-2xl relative overflow-hidden group/manifest select-none">
-              {/* Departure Header */}
-              <div className="flex items-center justify-between pb-4 mb-5 border-b border-slate-800/80">
-                <div className="flex items-center gap-2 text-xs font-mono">
-                  <Compass className="w-4 h-4 text-cyan-400 animate-spin-slow" />
-                  <span className="font-bold text-white tracking-wider">
-                    JOURNEY MANIFEST
-                  </span>
-                </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950/60 border border-cyan-800/50 text-cyan-300 font-semibold">
-                  6 MILESTONES
-                </span>
-              </div>
-
-              <p className="text-xs text-slate-400 leading-relaxed mb-4">
-                A continuous narrative path traversing live products, distributed system architecture, engineering philosophy, and enterprise delivery.
-              </p>
-
-              {/* Waypoint Route Manifest List */}
-              <div className="space-y-2 mb-6">
-                {journeyMilestones.map((m) => (
-                  <button
-                    key={m.step}
-                    onClick={() => scrollToSection(m.targetId)}
-                    className="w-full p-2.5 rounded-xl bg-slate-900/50 hover:bg-slate-900 border border-slate-800/70 hover:border-cyan-500/40 text-left transition-all duration-200 flex items-center justify-between group cursor-pointer"
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className="w-6 h-6 rounded-lg bg-slate-950 border border-slate-800 flex items-center justify-center text-[10px] font-mono text-cyan-400 font-bold group-hover:border-cyan-500/60 group-hover:text-cyan-300 transition-colors">
-                        {m.step}
-                      </span>
-                      <div>
-                        <div className="text-xs font-semibold text-slate-200 group-hover:text-white transition-colors flex items-center gap-1.5">
-                          <span>{m.title}</span>
-                          <span className="opacity-0 group-hover:opacity-100 text-cyan-400 text-[11px] transition-opacity">
-                            →
-                          </span>
-                        </div>
-                        <div className="text-[10px] text-slate-400 font-mono">
-                          {m.desc}
-                        </div>
-                      </div>
-                    </div>
-                    <span className="p-1 rounded-md bg-slate-950 border border-slate-800/80 text-slate-400 group-hover:text-cyan-300 transition-colors">
-                      {m.icon}
-                    </span>
-                  </button>
-                ))}
-              </div>
-
-              {/* Journey Launch Anchor - Where the glowing trail originates */}
-              <div
-                id="path-anchor-hero"
-                className="pt-4 border-t border-slate-800/80 flex items-center justify-between"
+          {/* Right Column: Orbital Dashed Ring & Interactive Centerpiece */}
+          <div className="order-1 xl:order-none flex items-center justify-center">
+            <div className="relative w-[240px] h-[240px] min-[360px]:w-[280px] min-[360px]:h-[280px] sm:w-[360px] sm:h-[360px] xl:w-[460px] xl:h-[460px] flex items-center justify-center">
+              {/* Rotating Dashed SVG Orbit Ring */}
+              <svg
+                className="w-full h-full animate-spin-slow absolute inset-0 pointer-events-none"
+                viewBox="0 0 506 506"
+                fill="transparent"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <div className="flex items-center gap-2 text-[11px] font-mono text-cyan-400">
-                  <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-                  <span className="font-semibold">TRAIL ACTIVE</span>
-                </div>
+                <circle
+                  cx="253"
+                  cy="253"
+                  r="248"
+                  stroke="#00ff99"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeDasharray="24 12 0 0"
+                />
+              </svg>
 
-                <button
-                  onClick={() => scrollToSection("work")}
-                  className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-300 hover:text-cyan-300 transition-colors cursor-pointer group font-medium"
-                >
-                  <span>Begin Journey</span>
-                  <span className="group-hover:translate-x-1 transition-transform">──►</span>
-                </button>
+              {/* Inner Avatar Photo Container (radnaabazar style) */}
+              <div
+                onClick={cycleGreeting}
+                className="group relative cursor-pointer w-[190px] h-[190px] min-[360px]:w-[220px] min-[360px]:h-[220px] sm:w-[280px] sm:h-[280px] xl:w-[360px] xl:h-[360px] rounded-full p-2 sm:p-2.5 bg-gradient-to-tr from-[#00ff99]/30 via-white/[0.08] to-transparent border border-[#00ff99]/30 shadow-[0_0_50px_rgba(0,255,153,0.18)] flex items-center justify-center overflow-hidden transition-transform duration-500 hover:scale-105"
+              >
+                <div className="w-full h-full rounded-full relative overflow-hidden border border-white/[0.15] bg-[#0b0c16]">
+                  {/* Photo of Narendra */}
+                  <Image
+                    src="/narendra.jpg"
+                    alt="Narendra - Java Full Stack Developer"
+                    fill
+                    sizes="(max-width: 640px) 220px, (max-width: 1280px) 280px, 360px"
+                    className="object-cover object-[center_18%] filter contrast-[1.05] brightness-[1.02] group-hover:scale-105 transition-transform duration-700"
+                    priority
+                  />
+
+                  {/* Futuristic Vignette Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#000319]/80 via-transparent to-transparent pointer-events-none" />
+
+                  {/* Interactive Greeting Pill (Hover/Tap) */}
+                  <div className="pointer-events-none absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-[#000319]/85 border border-[#00ff99]/40 backdrop-blur-md text-[10px] sm:text-[11px] font-mono text-[#00ff99] shadow-lg shadow-black/60 transition-all duration-300 whitespace-nowrap flex items-center gap-1.5 z-10">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00ff99] animate-pulse" />
+                    <span>{greetings[greetingIndex]}</span>
+                  </div>
+                </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Metric Stats Banner */}
+        <div className="pt-8 sm:pt-10 pb-6 border-t border-white/[0.08] mt-6">
+          <div className="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <div className="flex items-center gap-4">
+              <span className="text-3xl min-[420px]:text-4xl sm:text-5xl font-extrabold text-white tracking-tight shrink-0">
+                1<span className="text-[#00ff99]">+</span>
+              </span>
+              <p className="text-xs sm:text-sm font-medium text-white/70 leading-snug">
+                Years of professional experience at Hexaware
+              </p>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <span className="text-3xl min-[420px]:text-4xl sm:text-5xl font-extrabold text-white tracking-tight shrink-0">
+                5<span className="text-[#00ff99]">+</span>
+              </span>
+              <p className="text-xs sm:text-sm font-medium text-white/70 leading-snug">
+                Production &amp; full-stack applications built
+              </p>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <span className="text-2xl min-[420px]:text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-mono text-[#00ff99] shrink-0">
+                SOLID
+              </span>
+              <p className="text-xs sm:text-sm font-medium text-white/70 leading-snug">
+                Layered backend &amp; RESTful architecture
+              </p>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <span className="text-2xl min-[420px]:text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-mono text-[#00ff99] shrink-0">
+                Award
+              </span>
+              <p className="text-xs sm:text-sm font-medium text-white/70 leading-snug">
+                Hexaware Innovative Champion &amp; Scholar
+              </p>
             </div>
           </div>
         </div>
