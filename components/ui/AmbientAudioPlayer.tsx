@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Play, Pause, Music2, Volume2, VolumeX, Sparkles } from "lucide-react";
+import { Play, Pause, Music2 } from "lucide-react";
 
 export function AmbientAudioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [minimized, setMinimized] = useState(false);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -79,6 +78,7 @@ export function AmbientAudioPlayer() {
     if (isPlaying) {
       stopAudio();
       setIsPlaying(false);
+      setProgress(0);
     } else {
       startAudio();
       setIsPlaying(true);
@@ -87,14 +87,10 @@ export function AmbientAudioPlayer() {
 
   // Animate progress bar while playing
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (isPlaying) {
-      timer = setInterval(() => {
-        setProgress((prev) => (prev >= 100 ? 0 : prev + 1));
-      }, 300);
-    } else {
-      setProgress(0);
-    }
+    if (!isPlaying) return;
+    const timer = setInterval(() => {
+      setProgress((prev) => (prev >= 100 ? 0 : prev + 1));
+    }, 300);
     return () => clearInterval(timer);
   }, [isPlaying]);
 

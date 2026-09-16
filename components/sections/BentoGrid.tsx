@@ -6,16 +6,9 @@ import {
   Layers,
   Copy,
   Check,
-  Cpu,
   Globe2,
   Award,
-  Terminal,
-  ShieldCheck,
-  Server,
-  Cloud,
-  Database,
-  Code2,
-  ArrowRight
+  Server
 } from "lucide-react";
 
 export function BentoGrid() {

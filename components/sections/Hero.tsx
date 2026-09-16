@@ -5,13 +5,7 @@ import Image from "next/image";
 import {
   ChevronRight,
   Mail,
-  Copy,
-  Check,
-  Code2,
-  Terminal,
-  Cpu,
-  Layers,
-  Sparkles
+  Check
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
 

@@ -1,16 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import {
-  ExternalLink,
   Download,
-  Smartphone,
   Globe,
   Server,
-  Layers,
   Sparkles,
-  ArrowUpRight,
-  Code2
+  ArrowUpRight
 } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
 
