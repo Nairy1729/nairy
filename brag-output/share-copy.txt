@@ -1,0 +1,3 @@
+I don't just build software that works—I build software people remember. From 3D WebGL simulations to offline Android apps and resilient enterprise backends, here's a look at my engineering mindset and work.
+
+Full portfolio & interactive demos: https://github.com/Nairy1729

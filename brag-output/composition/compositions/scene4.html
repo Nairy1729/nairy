@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 4 — WordDrop Mobile App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #000319;
+      color: #f4f4f5;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #000319;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 120px;
+    }
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .ambient-glow-emerald {
+      position: absolute;
+      width: 900px;
+      height: 900px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 255, 153, 0.12) 0%, rgba(0, 3, 25, 0) 70%);
+      top: -200px;
+      right: -200px;
+      pointer-events: none;
+    }
+    .ambient-glow-cyan {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.10) 0%, rgba(0, 3, 25, 0) 70%);
+      bottom: -200px;
+      left: -200px;
+      pointer-events: none;
+    }
+    .top-nav-bar {
+      position: absolute;
+      top: 48px;
+      left: 72px;
+      right: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 50;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      color: #a1a1aa;
+    }
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .brand-status-dot {
+      width: 10px;
+      height: 10px;
+      background: #00ff99;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #00ff99;
+    }
+    .system-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 100px;
+      font-size: 13px;
+      color: #d4d4d8;
+    }
+    .accent-emerald {
+      color: #00ff99;
+      text-shadow: 0 0 24px rgba(0, 255, 153, 0.4);
+    }
+    .accent-cyan {
+      color: #38bdf8;
+      text-shadow: 0 0 24px rgba(56, 189, 248, 0.4);
+    }
+    .accent-violet {
+      color: #a78bfa;
+      text-shadow: 0 0 24px rgba(167, 139, 250, 0.4);
+    }
+    .tag-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #00ff99;
+      margin-bottom: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tag-mono::before {
+      content: "";
+      display: inline-block;
+      width: 24px;
+      height: 2px;
+      background: #00ff99;
+    }
+  </style>
+
+  <style>
+    .worddrop-wrap {
+      display: flex;
+      align-items: center;
+      gap: 100px;
+      width: 100%;
+      max-width: 1640px;
+    }
+    .phone-mockup {
+      width: 440px;
+      height: 720px;
+      background: #09090b;
+      border: 4px solid #27272a;
+      border-radius: 54px;
+      padding: 24px;
+      box-shadow: 0 0 60px rgba(0, 255, 153, 0.15), 0 30px 60px rgba(0, 0, 0, 0.9);
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 20%, #18181b 0%, #09090b 100%);
+      border-radius: 36px;
+      padding: 28px 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .phone-notch {
+      width: 120px;
+      height: 24px;
+      background: #000000;
+      border-radius: 20px;
+      margin: 0 auto 30px auto;
+    }
+    .lockscreen-time {
+      text-align: center;
+      font-size: 54px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .lockscreen-date {
+      text-align: center;
+      font-size: 16px;
+      color: #a1a1aa;
+      margin-bottom: 48px;
+    }
+    .notification-card {
+      background: rgba(24, 24, 27, 0.95);
+      border: 1px solid rgba(0, 255, 153, 0.4);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 255, 153, 0.15);
+      position: relative;
+    }
+    .notif-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .notif-app {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #00ff99;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .notif-icon {
+      width: 18px;
+      height: 18px;
+      background: #00ff99;
+      border-radius: 4px;
+    }
+    .notif-word {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+    .notif-phonetic {
+      font-size: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #38bdf8;
+      margin-bottom: 8px;
+    }
+    .notif-def {
+      font-size: 15px;
+      line-height: 1.45;
+      color: #d4d4d8;
+      margin-bottom: 16px;
+    }
+    .notif-actions { display: flex; gap: 10px; }
+    .notif-btn {
+      flex: 1;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .worddrop-details { flex: 1; }
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 32px;
+    }
+    .feature-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px 24px;
+    }
+    .feature-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(0, 255, 153, 0.12);
+      border: 1px solid rgba(0, 255, 153, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00ff99;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      flex-shrink: 0;
+    }
+    .feature-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    .feature-desc {
+      font-size: 15px;
+      color: #a1a1aa;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="scene4" data-width="1920" data-height="1080">
+    
+  <div class="bg-grid"></div>
+  <div class="ambient-glow-emerald" data-layout-allow-overflow="true"></div>
+  <div class="ambient-glow-cyan" data-layout-allow-overflow="true"></div>
+  <header class="top-nav-bar" data-layout-allow-overlap="true">
+    <div class="brand-mark">
+      <span class="brand-status-dot"></span>
+      <span>NARENDRA</span>
+    </div>
+    <div class="system-badge">
+      <span>SOFTWARE ENGINEER & BUILDER</span>
+    </div>
+    <div class="system-badge">
+      <span>2026 REEL · 16:9</span>
+    </div>
+  </header>
+
+    <div class="worddrop-wrap">
+      <div class="phone-mockup" id="phone-container">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <div class="lockscreen-time">10:42</div>
+          <div class="lockscreen-date">Tuesday, September 22</div>
+          <div class="notification-card" id="worddrop-notif">
+            <div class="notif-header">
+              <div class="notif-app">
+                <div class="notif-icon"></div>
+                <span>WORDDROP</span>
+              </div>
+              <span style="font-size: 11px; color: #a1a1aa;">Just now</span>
+            </div>
+            <div class="notif-word">SERENDIPITY</div>
+            <div class="notif-phonetic">[ se-rən-ˈdi-pə-tē ] · noun</div>
+            <div class="notif-def">The occurrence of events by chance in a happy or beneficial way.</div>
+            <div class="notif-actions">
+              <div class="notif-btn">Save Word</div>
+              <div class="notif-btn" style="background: rgba(0, 255, 153, 0.15); color: #00ff99; border-color: rgba(0, 255, 153, 0.4);">Pronounce 🔊</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="worddrop-details">
+        <div class="tag-mono">// 04 · MOBILE ARCHITECTURE</div>
+        <h2 class="project-heading" style="font-size: 54px; font-weight: 800; color: #ffffff; line-height: 1.15; margin-bottom: 20px;">
+          WORDDROP<br />
+          <span class="accent-emerald">LOCK SCREEN DISCOVERY</span>
+        </h2>
+        <p class="project-desc" style="font-size: 22px; color: #d4d4d8; line-height: 1.6; margin-bottom: 32px;">
+          An Android app delivering curated daily vocabulary right to your lock screen. Zero tracking, zero friction, and completely functional offline.
+        </p>
+        <div class="feature-list">
+          <div class="feature-item" id="feat-1">
+            <div class="feature-icon-box">01</div>
+            <div>
+              <div class="feature-title">100% Offline & Private</div>
+              <div class="feature-desc">Zero external API dependencies. Built with local Room SQLite database for immediate instant-load queries.</div>
+            </div>
+          </div>
+          <div class="feature-item" id="feat-2">
+            <div class="feature-icon-box">02</div>
+            <div>
+              <div class="feature-title">Ambient Daily Habits</div>
+              <div class="feature-desc">Integrates effortlessly into everyday Android notifications without demanding extra screen time.</div>
+            </div>
+          </div>
+          <div class="feature-item" id="feat-3">
+            <div class="feature-icon-box">03</div>
+            <div>
+              <div class="feature-title">Clean Kotlin Architecture</div>
+              <div class="feature-desc">Modern MVVM structure with Jetpack components, Flow, and coroutines for battery-efficient background sync.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#phone-container", { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.1);
+    tl.fromTo("#worddrop-notif", { opacity: 0, y: -40, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.5)" }, 0.4);
+    tl.fromTo(".worddrop-details", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.3);
+    tl.fromTo(".feature-item", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.5, stagger: 0.2, ease: "power2.out" }, 0.6);
+    tl.to(".worddrop-wrap", { opacity: 0, scale: 0.96, duration: 0.35, ease: "power2.in" }, 6.0);
+    window.__timelines = window.__timelines || {};
+    window.__timelines["scene4"] = tl;
+    tl.seek(0);
+  </script>
+</body>
+</html>

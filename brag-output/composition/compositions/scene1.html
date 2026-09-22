@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 1 — The Hook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #000319;
+      color: #f4f4f5;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #000319;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 120px;
+    }
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .ambient-glow-emerald {
+      position: absolute;
+      width: 900px;
+      height: 900px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 255, 153, 0.12) 0%, rgba(0, 3, 25, 0) 70%);
+      top: -200px;
+      right: -200px;
+      pointer-events: none;
+    }
+    .ambient-glow-cyan {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.10) 0%, rgba(0, 3, 25, 0) 70%);
+      bottom: -200px;
+      left: -200px;
+      pointer-events: none;
+    }
+    .top-nav-bar {
+      position: absolute;
+      top: 48px;
+      left: 72px;
+      right: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 50;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      color: #a1a1aa;
+    }
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .brand-status-dot {
+      width: 10px;
+      height: 10px;
+      background: #00ff99;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #00ff99;
+    }
+    .system-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 100px;
+      font-size: 13px;
+      color: #d4d4d8;
+    }
+    .accent-emerald {
+      color: #00ff99;
+      text-shadow: 0 0 24px rgba(0, 255, 153, 0.4);
+    }
+    .accent-cyan {
+      color: #38bdf8;
+      text-shadow: 0 0 24px rgba(56, 189, 248, 0.4);
+    }
+    .accent-violet {
+      color: #a78bfa;
+      text-shadow: 0 0 24px rgba(167, 139, 250, 0.4);
+    }
+    .tag-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #00ff99;
+      margin-bottom: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tag-mono::before {
+      content: "";
+      display: inline-block;
+      width: 24px;
+      height: 2px;
+      background: #00ff99;
+    }
+  </style>
+
+  <style>
+    .hook-content { max-width: 1400px; text-align: left; }
+    .hook-headline {
+      font-size: 72px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 32px;
+    }
+    .hook-sub {
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #a1a1aa;
+      max-width: 850px;
+    }
+    .hook-badge-row { display: flex; gap: 16px; margin-top: 40px; }
+    .hook-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      padding: 8px 18px;
+      border-radius: 8px;
+      background: rgba(0, 255, 153, 0.08);
+      border: 1px solid rgba(0, 255, 153, 0.3);
+      color: #00ff99;
+    }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="scene1" data-width="1920" data-height="1080">
+    
+  <div class="bg-grid"></div>
+  <div class="ambient-glow-emerald" data-layout-allow-overflow="true"></div>
+  <div class="ambient-glow-cyan" data-layout-allow-overflow="true"></div>
+  <header class="top-nav-bar" data-layout-allow-overlap="true">
+    <div class="brand-mark">
+      <span class="brand-status-dot"></span>
+      <span>NARENDRA</span>
+    </div>
+    <div class="system-badge">
+      <span>SOFTWARE ENGINEER & BUILDER</span>
+    </div>
+    <div class="system-badge">
+      <span>2026 REEL · 16:9</span>
+    </div>
+  </header>
+
+    <div class="hook-content">
+      <div class="tag-mono">// 01 · CRAFTSMANSHIP & RIGOR</div>
+      <h1 class="hook-headline">
+        I DON'T JUST BUILD SOFTWARE THAT WORKS.<br />
+        I BUILD SOFTWARE PEOPLE <span class="accent-emerald">REMEMBER.</span>
+      </h1>
+      <p class="hook-sub">
+        Engineering is more than functional logic. It is the synthesis of resilient systems, tactile micro-interactions, and thoughtful architecture.
+      </p>
+      <div class="hook-badge-row">
+        <span class="hook-pill">SYSTEM STATUS: LIVE</span>
+        <span class="hook-pill">FIRST PRINCIPLES ENGINEERING</span>
+        <span class="hook-pill">ZERO FLUFF</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo(".hook-headline", { opacity: 0, y: 36, scale: 0.98 }, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "power3.out" }, 0.1);
+    tl.fromTo(".hook-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 0.4);
+    tl.fromTo(".hook-pill", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, stagger: 0.12, ease: "back.out(1.5)" }, 0.7);
+    tl.to(".hook-content", { y: -12, duration: 3.2, ease: "none" }, 0.5);
+    tl.to(".hook-content", { opacity: 0, y: -24, duration: 0.35, ease: "power2.in" }, 3.8);
+    window.__timelines = window.__timelines || {};
+    window.__timelines["scene1"] = tl;
+    tl.seek(0);
+  </script>
+</body>
+</html>

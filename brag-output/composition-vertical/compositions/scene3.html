@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080, height=1920" />
+  <title>Scene 3 — What If: Another Life (9:16)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #000319;
+      color: #f4f4f5;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    #root {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #000319;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 72px 140px 72px;
+    }
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .ambient-glow-emerald {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 255, 153, 0.12) 0%, rgba(0, 3, 25, 0) 70%);
+      top: -150px;
+      right: -150px;
+      pointer-events: none;
+    }
+    .ambient-glow-cyan {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.10) 0%, rgba(0, 3, 25, 0) 70%);
+      bottom: -150px;
+      left: -150px;
+      pointer-events: none;
+    }
+    .top-nav-bar {
+      position: absolute;
+      top: 60px;
+      left: 72px;
+      right: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 50;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      color: #a1a1aa;
+    }
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .brand-status-dot {
+      width: 10px;
+      height: 10px;
+      background: #00ff99;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #00ff99;
+    }
+    .system-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 100px;
+      font-size: 13px;
+      color: #d4d4d8;
+    }
+    .accent-emerald {
+      color: #00ff99;
+      text-shadow: 0 0 24px rgba(0, 255, 153, 0.4);
+    }
+    .accent-cyan {
+      color: #38bdf8;
+      text-shadow: 0 0 24px rgba(56, 189, 248, 0.4);
+    }
+    .accent-violet {
+      color: #a78bfa;
+      text-shadow: 0 0 24px rgba(167, 139, 250, 0.4);
+    }
+    .tag-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #00ff99;
+      margin-bottom: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tag-mono::before {
+      content: "";
+      display: inline-block;
+      width: 24px;
+      height: 2px;
+      background: #00ff99;
+    }
+  </style>
+
+  <style>
+    .project-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 920px;
+      text-align: center;
+    }
+    .project-heading {
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+    .project-desc {
+      font-size: 22px;
+      color: #d4d4d8;
+      line-height: 1.6;
+      margin-bottom: 28px;
+      max-width: 820px;
+    }
+    .project-preview-card {
+      width: 100%;
+      max-width: 880px;
+      height: 580px;
+      background: linear-gradient(135deg, rgba(30, 27, 75, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+      border: 1px solid rgba(167, 139, 250, 0.35);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 0 60px rgba(139, 92, 246, 0.2), inset 0 0 30px rgba(139, 92, 246, 0.08);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+    .preview-browser-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 16px;
+    }
+    .preview-dots { display: flex; gap: 8px; }
+    .preview-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+    }
+    .preview-url {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #a1a1aa;
+    }
+    .simulation-visual {
+      position: relative;
+      height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .simulation-hub {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #8b5cf6;
+      box-shadow: 0 0 40px #8b5cf6, 0 0 80px #06b6d4;
+      z-index: 10;
+      position: relative;
+    }
+    .timeline-beam {
+      position: absolute;
+      height: 4px;
+      transform-origin: left center;
+      border-radius: 2px;
+    }
+    .beam-1 {
+      width: 320px;
+      top: 50%;
+      left: 50%;
+      background: linear-gradient(90deg, #8b5cf6, #ec4899);
+      transform: rotate(-35deg);
+      box-shadow: 0 0 20px #ec4899;
+    }
+    .beam-2 {
+      width: 340px;
+      top: 50%;
+      left: 50%;
+      background: linear-gradient(90deg, #8b5cf6, #00ff99);
+      transform: rotate(0deg);
+      box-shadow: 0 0 20px #00ff99;
+    }
+    .beam-3 {
+      width: 320px;
+      top: 50%;
+      left: 50%;
+      background: linear-gradient(90deg, #8b5cf6, #06b6d4);
+      transform: rotate(35deg);
+      box-shadow: 0 0 20px #06b6d4;
+    }
+    .sim-node {
+      position: absolute;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .sim-node-1 { top: 40px; right: 40px; color: #f472b6; border-color: #ec4899; }
+    .sim-node-2 { top: 145px; right: 20px; color: #00ff99; border-color: #00ff99; }
+    .sim-node-3 { bottom: 40px; right: 40px; color: #38bdf8; border-color: #06b6d4; }
+    .preview-bottom-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #a1a1aa;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 14px;
+    }
+    .tech-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+    .tech-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      padding: 8px 18px;
+      border-radius: 8px;
+      background: rgba(167, 139, 250, 0.1);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      color: #c084fc;
+    }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="scene3" data-width="1080" data-height="1920">
+    
+  <div class="bg-grid"></div>
+  <div class="ambient-glow-emerald" data-layout-allow-overflow="true"></div>
+  <div class="ambient-glow-cyan" data-layout-allow-overflow="true"></div>
+  <header class="top-nav-bar" data-layout-allow-overlap="true">
+    <div class="brand-mark">
+      <span class="brand-status-dot"></span>
+      <span>NARENDRA</span>
+    </div>
+    <div class="system-badge">
+      <span>REEL · 9:16</span>
+    </div>
+  </header>
+
+    <div class="project-wrap">
+      <div class="tag-mono">// 03 · FEATURED CREATIVE WORK</div>
+      <h2 class="project-heading">
+        WHAT IF: <span class="accent-violet">ANOTHER LIFE</span>
+      </h2>
+      <p class="project-desc">
+        An interactive 3D WebGL journey exploring divergent lifelines. Powered by custom Three.js shaders and locked 60fps simulation fluidity.
+      </p>
+      <div class="project-preview-card" id="what-if-card">
+        <div class="preview-browser-bar">
+          <div class="preview-dots">
+            <div class="preview-dot"></div>
+            <div class="preview-dot"></div>
+            <div class="preview-dot"></div>
+          </div>
+          <div class="preview-url">naren-what-if.vercel.app</div>
+          <div class="accent-emerald" style="font-size: 13px; font-family: 'JetBrains Mono', monospace;">● 60 FPS</div>
+        </div>
+        <div class="simulation-visual">
+          <div class="simulation-hub" id="sim-hub"></div>
+          <div class="timeline-beam beam-1" id="beam-1"></div>
+          <div class="timeline-beam beam-2" id="beam-2"></div>
+          <div class="timeline-beam beam-3" id="beam-3"></div>
+          <div class="sim-node sim-node-1">ALPHA: RESEARCHER</div>
+          <div class="sim-node sim-node-2">BETA: ARCHITECT</div>
+          <div class="sim-node sim-node-3">GAMMA: CREATIVE DEV</div>
+        </div>
+        <div class="preview-bottom-bar">
+          <span>DIVERGENT TIMELINE SIMULATION</span>
+          <span>AUDIO-REACTIVE SHADERS</span>
+        </div>
+      </div>
+      <div class="tech-pill-row">
+        <span class="tech-pill">THREE.JS</span>
+        <span class="tech-pill">GLSL SHADERS</span>
+        <span class="tech-pill">WEBGL</span>
+        <span class="tech-pill">PROCEDURAL PARTICLES</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo(".project-heading", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+    tl.fromTo("#what-if-card", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.8, ease: "power3.out" }, 0.2);
+    tl.fromTo("#sim-hub", { scale: 0 }, { scale: 1, duration: 0.5, ease: "back.out(2)" }, 0.5);
+    tl.fromTo("#beam-1", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 0.7);
+    tl.fromTo("#beam-2", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 0.9);
+    tl.fromTo("#beam-3", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 1.1);
+    tl.fromTo(".sim-node", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.4, stagger: 0.15, ease: "back.out(1.4)" }, 1.2);
+    tl.fromTo(".tech-pill", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.1, ease: "power2.out" }, 1.4);
+    tl.to("#what-if-card", { y: -10, duration: 4.0, ease: "sine.inOut" }, 0.5);
+    tl.to(".project-wrap", { opacity: 0, y: -20, duration: 0.35, ease: "power2.in" }, 5.2);
+    window.__timelines = window.__timelines || {};
+    window.__timelines["scene3"] = tl;
+    tl.seek(0);
+  </script>
+</body>
+</html>

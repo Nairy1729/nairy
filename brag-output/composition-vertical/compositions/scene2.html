@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080, height=1920" />
+  <title>Scene 2 — Approach & Hero (9:16)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #000319;
+      color: #f4f4f5;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    #root {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #000319;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 72px 140px 72px;
+    }
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .ambient-glow-emerald {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 255, 153, 0.12) 0%, rgba(0, 3, 25, 0) 70%);
+      top: -150px;
+      right: -150px;
+      pointer-events: none;
+    }
+    .ambient-glow-cyan {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.10) 0%, rgba(0, 3, 25, 0) 70%);
+      bottom: -150px;
+      left: -150px;
+      pointer-events: none;
+    }
+    .top-nav-bar {
+      position: absolute;
+      top: 60px;
+      left: 72px;
+      right: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 50;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      color: #a1a1aa;
+    }
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .brand-status-dot {
+      width: 10px;
+      height: 10px;
+      background: #00ff99;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #00ff99;
+    }
+    .system-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 100px;
+      font-size: 13px;
+      color: #d4d4d8;
+    }
+    .accent-emerald {
+      color: #00ff99;
+      text-shadow: 0 0 24px rgba(0, 255, 153, 0.4);
+    }
+    .accent-cyan {
+      color: #38bdf8;
+      text-shadow: 0 0 24px rgba(56, 189, 248, 0.4);
+    }
+    .accent-violet {
+      color: #a78bfa;
+      text-shadow: 0 0 24px rgba(167, 139, 250, 0.4);
+    }
+    .tag-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #00ff99;
+      margin-bottom: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tag-mono::before {
+      content: "";
+      display: inline-block;
+      width: 24px;
+      height: 2px;
+      background: #00ff99;
+    }
+  </style>
+
+  <style>
+    .hero-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 920px;
+      text-align: center;
+    }
+    .hero-photo-wrap {
+      position: relative;
+      width: 360px;
+      height: 360px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-orbit-svg {
+      position: absolute;
+      inset: -30px;
+      width: 420px;
+      height: 420px;
+      pointer-events: none;
+    }
+    .hero-photo {
+      width: 330px;
+      height: 330px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(0, 255, 153, 0.6);
+      box-shadow: 0 0 50px rgba(0, 255, 153, 0.25), 0 20px 40px rgba(0, 0, 0, 0.8);
+    }
+    .hero-title {
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+    .hero-desc {
+      font-size: 22px;
+      color: #d4d4d8;
+      line-height: 1.5;
+      margin-bottom: 40px;
+      max-width: 800px;
+    }
+    .hero-stats-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      max-width: 720px;
+    }
+    .stat-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 20px 28px;
+      backdrop-filter: blur(12px);
+    }
+    .stat-val {
+      font-size: 32px;
+      font-weight: 800;
+      color: #00ff99;
+      letter-spacing: -0.02em;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .stat-lbl-block { text-align: right; }
+    .stat-lbl {
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+    .stat-sub { font-size: 13px; color: #a1a1aa; }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="scene2" data-width="1080" data-height="1920">
+    
+  <div class="bg-grid"></div>
+  <div class="ambient-glow-emerald" data-layout-allow-overflow="true"></div>
+  <div class="ambient-glow-cyan" data-layout-allow-overflow="true"></div>
+  <header class="top-nav-bar" data-layout-allow-overlap="true">
+    <div class="brand-mark">
+      <span class="brand-status-dot"></span>
+      <span>NARENDRA</span>
+    </div>
+    <div class="system-badge">
+      <span>REEL · 9:16</span>
+    </div>
+  </header>
+
+    <div class="hero-container">
+      <div class="hero-photo-wrap">
+        <svg class="hero-orbit-svg" viewBox="0 0 500 500" data-layout-allow-overflow="true">
+          <circle cx="250" cy="250" r="230" fill="none" stroke="rgba(0, 255, 153, 0.25)" stroke-width="2" stroke-dasharray="12 12" id="orbit-ring-1" data-layout-allow-overflow="true" />
+          <circle cx="250" cy="250" r="210" fill="none" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1.5" stroke-dasharray="6 14" id="orbit-ring-2" data-layout-allow-overflow="true" />
+          <circle cx="250" cy="20" r="5" fill="#00ff99" />
+          <circle cx="480" cy="250" r="4" fill="#38bdf8" />
+        </svg>
+        <img src="assets/img/narendra.jpg" alt="Narendra" class="hero-photo" id="hero-avatar" />
+      </div>
+      <div class="tag-mono">// 02 · FULL STACK BUILDER</div>
+      <h2 class="hero-title">
+        TURNING IDEAS INTO REAL,<br />
+        <span class="accent-cyan">INTERACTIVE EXPERIENCES.</span>
+      </h2>
+      <p class="hero-desc">
+        Bridging heavy enterprise backend infrastructure with modern, high-performance user interfaces.
+      </p>
+      <div class="hero-stats-grid">
+        <div class="stat-card">
+          <div class="stat-val">1+ YRS</div>
+          <div class="stat-lbl-block">
+            <div class="stat-lbl">Hexaware Tech</div>
+            <div class="stat-sub">Enterprise Java Systems</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">5+</div>
+          <div class="stat-lbl-block">
+            <div class="stat-lbl">Built Projects</div>
+            <div class="stat-sub">Production & Creative</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">STACK</div>
+          <div class="stat-lbl-block">
+            <div class="stat-lbl">Full Stack</div>
+            <div class="stat-sub">Java · Spring · Next.js</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#hero-avatar", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, ease: "back.out(1.4)" }, 0.1);
+    tl.to("#orbit-ring-1", { rotation: 180, transformOrigin: "center center", duration: 4.0, ease: "none" }, 0);
+    tl.to("#orbit-ring-2", { rotation: -180, transformOrigin: "center center", duration: 4.0, ease: "none" }, 0);
+    tl.fromTo(".hero-title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.2);
+    tl.fromTo(".hero-desc", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.4);
+    tl.fromTo(".stat-card", { opacity: 0, y: 24, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.15, ease: "back.out(1.5)" }, 0.6);
+    tl.to(".hero-container", { opacity: 0, scale: 0.96, duration: 0.35, ease: "power2.in" }, 3.6);
+    window.__timelines = window.__timelines || {};
+    window.__timelines["scene2"] = tl;
+    tl.seek(0);
+  </script>
+</body>
+</html>
