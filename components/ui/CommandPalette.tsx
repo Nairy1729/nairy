@@ -120,6 +120,13 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       shortcut: "G C"
     },
     {
+      id: "proj-jobhunter",
+      label: "JobHunter (AI-Powered Job Discovery Platform)",
+      category: "Projects",
+      icon: <FolderGit2 className="w-4 h-4 text-[#00ff99]" />,
+      action: () => scrollToSection("jobhunter")
+    },
+    {
       id: "proj-worddrop",
       label: "WordDrop (Daily Word Lock Screen & Vocabulary App)",
       category: "Projects",
@@ -153,6 +160,16 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       category: "Projects",
       icon: <FolderGit2 className="w-4 h-4 text-blue-400" />,
       action: () => scrollToSection("career-crafter")
+    },
+    {
+      id: "action-open-jobhunter",
+      label: "Launch JobHunter (AI Job Discovery Platform)",
+      category: "Actions",
+      icon: <ExternalLink className="w-4 h-4 text-[#00ff99]" />,
+      action: () => {
+        window.open("https://jobhunterfrontend.vercel.app", "_blank");
+        onClose();
+      }
     },
     {
       id: "action-download-worddrop",

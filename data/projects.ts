@@ -18,6 +18,51 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "jobhunter",
+    title: "JobHunter",
+    subtitle: "AI-Powered Job Discovery Platform",
+    category: "Full-Stack / AI / Developer Tools",
+    description:
+      "An AI-powered job discovery platform built to help developers find jobs worth applying to based on their profile, skills, experience and career preferences. Combines intelligent candidate-job matching, AI-assisted resume tailoring, and a dedicated government-job discovery engine.",
+    highlights: [
+      "Intelligent candidate-job matching evaluating skills, experience, and role relevance using pgvector embeddings",
+      "AI-assisted resume tailoring that preserves factual information and never fabricates qualifications",
+      "Separate discovery pipeline for Indian government recruitment linked directly to official notifications",
+      "Production-ready Spring Boot REST API with Spring Security, JWT auth, and refresh-token sessions"
+    ],
+    technologies: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "TanStack Query",
+      "Axios",
+      "Java",
+      "Spring Boot",
+      "Spring Security",
+      "JWT",
+      "PostgreSQL",
+      "pgvector",
+      "Google Gemini",
+      "Firecrawl",
+      "Vercel",
+      "Render",
+      "Supabase"
+    ],
+    featured: true,
+    status: "Production",
+    badge: "Full-Stack / AI / Developer Tools",
+    liveUrl: "https://jobhunterfrontend.vercel.app",
+    githubUrl: "https://github.com/Nairy1729",
+    isStagingPlaceholder: false,
+    architectureNotes: [
+      "Separation between private tech job discovery and authentic Indian government recruitment",
+      "Google Gemini semantic analysis + Firecrawl structured web content extraction",
+      "PostgreSQL + pgvector vector similarity pipeline matching candidate profiles against job requirements",
+      "Stateless JWT authentication with refresh-token rotation and Spring Security authorization filters"
+    ]
+  },
+  {
     id: "worddrop",
     title: "WordDrop",
     subtitle: "Daily Word Lock Screen & Vocabulary App",
