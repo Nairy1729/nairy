@@ -63,6 +63,45 @@ export const projects: Project[] = [
     ]
   },
   {
+    id: "lexora",
+    title: "Lexora",
+    subtitle: "Premium Offline-First Word Puzzle",
+    category: "Mobile Application",
+    description:
+      "An offline-first, five-letter daily word puzzle app built with React Native, Expo SDK 52, and TypeScript. Features a luxury dark-glass editorial aesthetic, an offline 12,947-word dictionary, deterministic 00:00 UTC daily synchronization, dual-session daily and practice mode isolation, local smart daytime notification scheduling, and a 55% package size reduction down to 36.15 MB.",
+    highlights: [
+      "100% offline-first architecture with 12,947-word accepted vocabulary and O(1) set lookups",
+      "Deterministic 00:00 UTC worldwide synchronization across a 6.3-year solution pool (2,311 words) with zero server dependencies",
+      "Dual-session state isolation guaranteeing practice plays never leak into daily streaks or stats",
+      "Optimized Android release package size by 55% (80.8 MB down to 36.15 MB) via Hermes and ProGuard/R8",
+      "152 automated unit & regression tests passing across 21 test suites with WCAG 2.1 AAA contrast"
+    ],
+    technologies: [
+      "React Native",
+      "Expo SDK 52",
+      "TypeScript",
+      "Android",
+      "Hermes Engine",
+      "ProGuard / R8",
+      "Offline Architecture",
+      "Local Notifications",
+      "WCAG AAA"
+    ],
+    featured: true,
+    status: "Published",
+    badge: "Published Android App",
+    liveUrl: "https://github.com/Nairy1729/Lexora/releases/tag/v1.0.0",
+    githubUrl: "https://github.com/Nairy1729/Lexora",
+    isStagingPlaceholder: false,
+    architectureNotes: [
+      "Hashed Set<string> for instantaneous O(1) dictionary lookups with zero network calls",
+      "Deterministic epoch hashing for globally synchronized daily puzzles at 00:00 UTC",
+      "Namespace-isolated state machines preventing practice mode leakage into daily streaks",
+      "Android ProGuard/R8 code shrinking and native ABI filtering (arm64-v8a / armeabi-v7a)",
+      "VAPT-hardened persistence with prototype pollution prevention and 5-character buffer clamps"
+    ]
+  },
+  {
     id: "worddrop",
     title: "WordDrop",
     subtitle: "Daily Word Lock Screen & Vocabulary App",

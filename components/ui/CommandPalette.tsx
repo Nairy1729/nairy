@@ -127,6 +127,13 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       action: () => scrollToSection("jobhunter")
     },
     {
+      id: "proj-lexora",
+      label: "Lexora (Premium Offline-First Word Puzzle)",
+      category: "Projects",
+      icon: <FolderGit2 className="w-4 h-4 text-amber-400" />,
+      action: () => scrollToSection("lexora")
+    },
+    {
       id: "proj-worddrop",
       label: "WordDrop (Daily Word Lock Screen & Vocabulary App)",
       category: "Projects",
@@ -168,6 +175,16 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       icon: <ExternalLink className="w-4 h-4 text-[#00ff99]" />,
       action: () => {
         window.open("https://jobhunterfrontend.vercel.app", "_blank");
+        onClose();
+      }
+    },
+    {
+      id: "action-download-lexora",
+      label: "Download Lexora APK (v1.0.0 Release)",
+      category: "Actions",
+      icon: <ExternalLink className="w-4 h-4 text-amber-400" />,
+      action: () => {
+        window.open("https://github.com/Nairy1729/Lexora/releases/tag/v1.0.0", "_blank");
         onClose();
       }
     },

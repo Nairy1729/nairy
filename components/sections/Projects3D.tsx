@@ -12,7 +12,9 @@ import {
   Cpu,
   Database,
   ShieldCheck,
-  Workflow
+  Workflow,
+  Smartphone,
+  CheckCircle2
 } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
 
@@ -31,7 +33,7 @@ interface Project {
   };
   githubUrl?: string;
   gradient: string;
-  previewGraphic: "jobhunter" | "worddrop" | "offerpilot" | "cds" | "anotherlife";
+  previewGraphic: "jobhunter" | "lexora" | "worddrop" | "offerpilot" | "cds" | "anotherlife";
   featured?: boolean;
 }
 
@@ -85,6 +87,34 @@ export function Projects3D() {
       githubUrl: "https://github.com/Nairy1729",
       gradient: "from-[#00ff99]/20 via-teal-900/30 to-[#000319]",
       previewGraphic: "jobhunter",
+      featured: true
+    },
+    {
+      id: "lexora",
+      title: "Lexora — Word Puzzle",
+      category: "React Native & Android",
+      tagline: "Think it. Find it. Lexora.",
+      description:
+        "A luxury, offline-first five-letter daily word puzzle app built with React Native, Expo SDK 52, and TypeScript. Features an offline 12,947-word dictionary, deterministic 00:00 UTC daily sync across 6.3+ years, dual-session daily and practice isolation, and an Android build shrunk by 55% from 80.8 MB to 36.15 MB.",
+      stats: "v1.0.0 Release · React Native · Expo 52 · 152 Tests",
+      tech: [
+        "React Native",
+        "Expo SDK 52",
+        "TypeScript",
+        "Android",
+        "Hermes",
+        "ProGuard / R8",
+        "Offline Engine",
+        "WCAG AAA"
+      ],
+      primaryLink: {
+        label: "Download APK (v1.0.0)",
+        url: "https://github.com/Nairy1729/Lexora/releases/tag/v1.0.0",
+        isDownload: true
+      },
+      githubUrl: "https://github.com/Nairy1729/Lexora",
+      gradient: "from-amber-500/20 via-orange-950/30 to-[#000319]",
+      previewGraphic: "lexora",
       featured: true
     },
     {
@@ -176,231 +206,264 @@ export function Projects3D() {
             A small selection of <span className="text-[#00ff99]">recent projects</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-white/60 max-w-2xl mx-auto">
-            AI discovery platforms, consumer mobile apps, WebGL simulations, and high-concurrency enterprise services.
+            AI discovery platforms, offline mobile architectures, WebGL simulations, and high-concurrency enterprise services.
           </p>
         </div>
 
-        {/* 3D Pin Container Grid */}
+        {/* 3D Pin Container Grid (2-Column Balanced Layout) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
-          {projects.map((project) => {
-            const isFeatured = project.id === "jobhunter";
-
-            return (
-              <div
-                key={project.id}
-                id={project.id}
-                className={`group relative flex flex-col justify-between rounded-3xl bg-[#0e101f]/90 border border-white/[0.1] hover:border-[#00ff99]/60 transition-all duration-500 hover:shadow-2xl hover:shadow-[#00ff99]/15 overflow-hidden ${
-                  isFeatured ? "md:col-span-2 lg:flex-row" : ""
-                }`}
-              >
-                {/* Top / Left Graphic Showcase */}
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              id={project.id}
+              className="group relative flex flex-col justify-between rounded-3xl bg-[#0e101f]/90 border border-white/[0.1] hover:border-[#00ff99]/60 transition-all duration-500 hover:shadow-2xl hover:shadow-[#00ff99]/15 overflow-hidden"
+            >
+              {/* Top Graphic Showcase */}
+              <div className="relative h-48 sm:h-56 w-full bg-gradient-to-br from-white/[0.04] to-transparent p-4 flex items-center justify-center overflow-hidden border-b border-white/[0.08]">
+                {/* Background Ambient Glow */}
                 <div
-                  className={`relative w-full bg-gradient-to-br from-white/[0.04] to-transparent p-4 flex items-center justify-center overflow-hidden border-b border-white/[0.08] ${
-                    isFeatured
-                      ? "h-52 sm:h-64 lg:h-auto lg:w-5/12 lg:border-b-0 lg:border-r"
-                      : "h-48 sm:h-56"
-                  }`}
-                >
-                  {/* Background Ambient Glow */}
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-tr ${project.gradient} opacity-40 group-hover:opacity-80 transition-opacity duration-500`}
-                  />
+                  className={`absolute inset-0 bg-gradient-to-tr ${project.gradient} opacity-40 group-hover:opacity-80 transition-opacity duration-500`}
+                />
 
-                  {/* Simulated Graphic Content for JobHunter */}
-                  {project.previewGraphic === "jobhunter" && (
-                    <div className="relative z-10 w-52 sm:w-60 h-36 rounded-2xl bg-black/85 border border-[#00ff99]/30 p-3 shadow-2xl flex flex-col justify-between transform group-hover:scale-105 transition-transform duration-500">
-                      <div className="flex items-center justify-between text-[10px] font-mono">
-                        <span className="text-[#00ff99] font-bold flex items-center gap-1.5">
-                          <Sparkles className="w-3 h-3 text-[#00ff99]" />
-                          JOBHUNTER
-                        </span>
-                        <span className="text-white/50 text-[9px] uppercase tracking-wider">
-                          AI MATCH ENGINE
-                        </span>
-                      </div>
+                {/* Simulated Graphic Content for JobHunter */}
+                {project.previewGraphic === "jobhunter" && (
+                  <div className="relative z-10 w-52 sm:w-60 h-36 rounded-2xl bg-black/85 border border-[#00ff99]/30 p-3 shadow-2xl flex flex-col justify-between transform group-hover:scale-105 transition-transform duration-500">
+                    <div className="flex items-center justify-between text-[10px] font-mono">
+                      <span className="text-[#00ff99] font-bold flex items-center gap-1.5">
+                        <Sparkles className="w-3 h-3 text-[#00ff99]" />
+                        JOBHUNTER
+                      </span>
+                      <span className="text-white/50 text-[9px] uppercase tracking-wider">
+                        AI MATCH ENGINE
+                      </span>
+                    </div>
 
-                      {/* Center Pipeline / Relevance Badge */}
-                      <div className="my-auto space-y-1.5">
-                        <div className="flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08]">
-                          <div className="flex items-center gap-1.5 text-[10px] font-mono text-white/90">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#00ff99] animate-pulse" />
-                            <span>Profile ⇄ JD Vector</span>
-                          </div>
-                          <span className="text-[10px] font-mono font-bold text-[#00ff99]">pgvector</span>
+                    {/* Center Pipeline / Relevance Badge */}
+                    <div className="my-auto space-y-1.5">
+                      <div className="flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08]">
+                        <div className="flex items-center gap-1.5 text-[10px] font-mono text-white/90">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#00ff99] animate-pulse" />
+                          <span>Profile ⇄ JD Vector</span>
                         </div>
-                        <div className="flex items-center justify-between px-2 py-0.5 text-[9px] font-mono text-white/60">
-                          <span>Dual Pipeline</span>
-                          <span className="text-teal-300">Private Tech + Govt Jobs</span>
-                        </div>
+                        <span className="text-[10px] font-mono font-bold text-[#00ff99]">pgvector</span>
                       </div>
-
-                      <div className="flex items-center justify-between text-[9px] font-mono text-white/50 border-t border-white/[0.08] pt-1">
-                        <span className="text-emerald-400">SPRING BOOT 3</span>
-                        <span className="text-cyan-400">GEMINI AI</span>
+                      <div className="flex items-center justify-between px-2 py-0.5 text-[9px] font-mono text-white/60">
+                        <span>Dual Pipeline</span>
+                        <span className="text-teal-300">Private Tech + Govt Jobs</span>
                       </div>
                     </div>
-                  )}
 
-                  {/* WordDrop Graphic */}
-                  {project.previewGraphic === "worddrop" && (
-                    <div className="relative z-10 w-44 h-36 rounded-2xl bg-black/80 border border-[#00ff99]/30 p-3 shadow-2xl flex flex-col justify-between transform group-hover:scale-105 transition-transform duration-500">
-                      <div className="flex items-center justify-between text-[10px] font-mono text-white/60">
-                        <span className="text-[#00ff99]">WORDDROP</span>
-                        <span>LOCK SCREEN</span>
-                      </div>
-                      <div className="my-auto text-center">
-                        <div className="text-lg font-bold text-white tracking-wide">Ephemeral</div>
-                        <div className="text-[10px] text-white/70 italic mt-0.5">
-                          &quot;lasting for a very short time&quot;
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-between text-[9px] font-mono text-[#00ff99]/80 border-t border-white/[0.1] pt-1">
-                        <span>SWIPE TO UNLOCK</span>
-                        <span>12:00</span>
-                      </div>
+                    <div className="flex items-center justify-between text-[9px] font-mono text-white/50 border-t border-white/[0.08] pt-1">
+                      <span className="text-emerald-400">SPRING BOOT 3</span>
+                      <span className="text-cyan-400">GEMINI AI</span>
                     </div>
-                  )}
-
-                  {/* OfferPilot Graphic */}
-                  {project.previewGraphic === "offerpilot" && (
-                    <div className="relative z-10 w-48 h-36 rounded-2xl bg-black/80 border border-sky-400/30 p-3 shadow-2xl flex flex-col justify-between transform group-hover:scale-105 transition-transform duration-500">
-                      <div className="flex items-center justify-between text-[10px] font-mono text-sky-400">
-                        <span>OFFERPILOT</span>
-                        <span>REDIS · JWT</span>
-                      </div>
-                      <div className="my-auto text-center">
-                        <div className="text-sm font-bold text-white tracking-wide">Compensation Engine</div>
-                        <div className="text-[10px] text-white/60 mt-0.5">
-                          REST APIs · Pagination · Filters
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-between text-[9px] font-mono text-sky-300 border-t border-white/[0.1] pt-1">
-                        <span>SPRING BOOT</span>
-                        <span>POSTGRESQL</span>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* CDS Enterprise Graphic */}
-                  {project.previewGraphic === "cds" && (
-                    <div className="relative z-10 w-48 h-36 rounded-2xl bg-black/80 border border-indigo-400/30 p-3 shadow-2xl flex flex-col justify-between transform group-hover:scale-105 transition-transform duration-500">
-                      <div className="flex items-center gap-1.5 text-[10px] font-mono text-indigo-300">
-                        <Server className="w-3.5 h-3.5" />
-                        <span>CDS ENTERPRISE</span>
-                      </div>
-                      <div className="grid grid-cols-2 gap-1.5 text-[9px] font-mono text-center">
-                        <div className="p-1.5 rounded bg-white/[0.04] border border-white/[0.08] text-[#00ff99]">
-                          LAYERED MVC
-                        </div>
-                        <div className="p-1.5 rounded bg-white/[0.04] border border-white/[0.08] text-sky-400">
-                          JWT AUTH
-                        </div>
-                        <div className="p-1.5 rounded bg-white/[0.04] border border-white/[0.08] text-white/80">
-                          JUNIT 5
-                        </div>
-                        <div className="p-1.5 rounded bg-white/[0.04] border border-white/[0.08] text-amber-400">
-                          DOCKER
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Another Life Graphic */}
-                  {project.previewGraphic === "anotherlife" && (
-                    <div className="relative z-10 w-48 h-36 rounded-2xl bg-black/80 border border-purple-400/30 p-3 shadow-2xl flex flex-col justify-center items-center text-center transform group-hover:scale-105 transition-transform duration-500">
-                      <div className="w-10 h-10 rounded-full bg-purple-500/20 border border-purple-400/40 flex items-center justify-center text-purple-300 mb-2">
-                        <Globe className="w-5 h-5 animate-pulse" />
-                      </div>
-                      <div className="text-sm font-bold text-white tracking-wider">ANOTHER LIFE</div>
-                      <div className="text-[10px] font-mono text-purple-300 mt-1">WebGL 3D Storytelling</div>
-                    </div>
-                  )}
-
-                  {/* Category Badge */}
-                  <div className="pointer-events-none absolute top-3 right-3 px-2.5 py-1 rounded-full bg-[#00ff99] text-[#000319] text-[10px] font-bold tracking-wider uppercase shadow-lg shadow-[#00ff99]/30">
-                    {project.category}
                   </div>
+                )}
+
+                {/* Simulated Graphic Content for Lexora */}
+                {project.previewGraphic === "lexora" && (
+                  <div className="relative z-10 w-52 sm:w-60 h-36 rounded-2xl bg-black/85 border border-amber-500/30 p-3 shadow-2xl flex flex-col justify-between transform group-hover:scale-105 transition-transform duration-500">
+                    <div className="flex items-center justify-between text-[10px] font-mono">
+                      <span className="text-amber-400 font-bold flex items-center gap-1.5">
+                        <Smartphone className="w-3 h-3 text-amber-400" />
+                        LEXORA
+                      </span>
+                      <span className="text-white/50 text-[9px] uppercase tracking-wider">
+                        100% OFFLINE
+                      </span>
+                    </div>
+
+                    {/* Luxury 5-Letter Tile Preview */}
+                    <div className="my-auto">
+                      <div className="flex items-center justify-center gap-1.5 mb-1.5">
+                        {[
+                          { letter: "L", state: "correct" },
+                          { letter: "E", state: "correct" },
+                          { letter: "X", state: "present" },
+                          { letter: "O", state: "correct" },
+                          { letter: "R", state: "absent" }
+                        ].map((t, idx) => (
+                          <div
+                            key={idx}
+                            className={`w-7 h-8 rounded-lg flex items-center justify-center font-bold text-xs font-mono shadow-sm ${
+                              t.state === "correct"
+                                ? "bg-emerald-600/90 text-white border border-emerald-400/50"
+                                : t.state === "present"
+                                ? "bg-amber-600/90 text-white border border-amber-400/50"
+                                : "bg-[#292019] text-white/60 border border-white/10"
+                            }`}
+                          >
+                            {t.letter}
+                          </div>
+                        ))}
+                      </div>
+                      <div className="text-center text-[9px] font-mono text-amber-200/70">
+                        12,947-Word Dictionary · 00:00 UTC Sync
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between text-[9px] font-mono text-white/50 border-t border-white/[0.08] pt-1">
+                      <span className="text-amber-400 font-mono">EXPO 52 · 36.15 MB</span>
+                      <span className="text-emerald-400 font-mono">152 TESTS PASSING</span>
+                    </div>
+                  </div>
+                )}
+
+                {/* WordDrop Graphic */}
+                {project.previewGraphic === "worddrop" && (
+                  <div className="relative z-10 w-44 h-36 rounded-2xl bg-black/80 border border-[#00ff99]/30 p-3 shadow-2xl flex flex-col justify-between transform group-hover:scale-105 transition-transform duration-500">
+                    <div className="flex items-center justify-between text-[10px] font-mono text-white/60">
+                      <span className="text-[#00ff99]">WORDDROP</span>
+                      <span>LOCK SCREEN</span>
+                    </div>
+                    <div className="my-auto text-center">
+                      <div className="text-lg font-bold text-white tracking-wide">Ephemeral</div>
+                      <div className="text-[10px] text-white/70 italic mt-0.5">
+                        &quot;lasting for a very short time&quot;
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between text-[9px] font-mono text-[#00ff99]/80 border-t border-white/[0.1] pt-1">
+                      <span>SWIPE TO UNLOCK</span>
+                      <span>12:00</span>
+                    </div>
+                  </div>
+                )}
+
+                {/* OfferPilot Graphic */}
+                {project.previewGraphic === "offerpilot" && (
+                  <div className="relative z-10 w-48 h-36 rounded-2xl bg-black/80 border border-sky-400/30 p-3 shadow-2xl flex flex-col justify-between transform group-hover:scale-105 transition-transform duration-500">
+                    <div className="flex items-center justify-between text-[10px] font-mono text-sky-400">
+                      <span>OFFERPILOT</span>
+                      <span>REDIS · JWT</span>
+                    </div>
+                    <div className="my-auto text-center">
+                      <div className="text-sm font-bold text-white tracking-wide">Compensation Engine</div>
+                      <div className="text-[10px] text-white/60 mt-0.5">
+                        REST APIs · Pagination · Filters
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between text-[9px] font-mono text-sky-300 border-t border-white/[0.1] pt-1">
+                      <span>SPRING BOOT</span>
+                      <span>POSTGRESQL</span>
+                    </div>
+                  </div>
+                )}
+
+                {/* CDS Enterprise Graphic */}
+                {project.previewGraphic === "cds" && (
+                  <div className="relative z-10 w-48 h-36 rounded-2xl bg-black/80 border border-indigo-400/30 p-3 shadow-2xl flex flex-col justify-between transform group-hover:scale-105 transition-transform duration-500">
+                    <div className="flex items-center gap-1.5 text-[10px] font-mono text-indigo-300">
+                      <Server className="w-3.5 h-3.5" />
+                      <span>CDS ENTERPRISE</span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-1.5 text-[9px] font-mono text-center">
+                      <div className="p-1.5 rounded bg-white/[0.04] border border-white/[0.08] text-[#00ff99]">
+                        LAYERED MVC
+                      </div>
+                      <div className="p-1.5 rounded bg-white/[0.04] border border-white/[0.08] text-sky-400">
+                        JWT AUTH
+                      </div>
+                      <div className="p-1.5 rounded bg-white/[0.04] border border-white/[0.08] text-white/80">
+                        JUNIT 5
+                      </div>
+                      <div className="p-1.5 rounded bg-white/[0.04] border border-white/[0.08] text-amber-400">
+                        DOCKER
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Another Life Graphic */}
+                {project.previewGraphic === "anotherlife" && (
+                  <div className="relative z-10 w-48 h-36 rounded-2xl bg-black/80 border border-purple-400/30 p-3 shadow-2xl flex flex-col justify-center items-center text-center transform group-hover:scale-105 transition-transform duration-500">
+                    <div className="w-10 h-10 rounded-full bg-purple-500/20 border border-purple-400/40 flex items-center justify-center text-purple-300 mb-2">
+                      <Globe className="w-5 h-5 animate-pulse" />
+                    </div>
+                    <div className="text-sm font-bold text-white tracking-wider">ANOTHER LIFE</div>
+                    <div className="text-[10px] font-mono text-purple-300 mt-1">WebGL 3D Storytelling</div>
+                  </div>
+                )}
+
+                {/* Category Badge */}
+                <div className="pointer-events-none absolute top-3 right-3 px-2.5 py-1 rounded-full bg-[#00ff99] text-[#000319] text-[10px] font-bold tracking-wider uppercase shadow-lg shadow-[#00ff99]/30">
+                  {project.category}
+                </div>
+              </div>
+
+              {/* Card Body */}
+              <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-[#00ff99] transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs font-mono text-[#00ff99] mt-1 font-semibold">
+                    {project.tagline}
+                  </p>
+                  <p className="text-xs sm:text-sm text-white/70 mt-3 leading-relaxed">
+                    {project.description}
+                  </p>
                 </div>
 
-                {/* Card Body */}
-                <div
-                  className={`p-6 sm:p-7 flex-1 flex flex-col justify-between ${
-                    isFeatured ? "lg:p-8 lg:w-7/12" : ""
-                  }`}
-                >
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-[#00ff99] transition-colors duration-300">
-                      {project.title}
-                    </h3>
-                    <p className="text-xs font-mono text-[#00ff99] mt-1 font-semibold">
-                      {project.tagline}
-                    </p>
-                    <p className="text-xs sm:text-sm text-white/70 mt-3 leading-relaxed">
-                      {project.description}
-                    </p>
+                {/* Tech Pills */}
+                <div className="mt-6 pt-5 border-t border-white/[0.08]">
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {project.tech.map((t, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[10px] font-mono text-white/80"
+                      >
+                        {t}
+                      </span>
+                    ))}
                   </div>
 
-                  {/* Tech Pills */}
-                  <div className="mt-6 pt-5 border-t border-white/[0.08]">
-                    <div className="flex flex-wrap gap-1.5 mb-5">
-                      {project.tech.map((t, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[10px] font-mono text-white/80"
-                        >
-                          {t}
-                        </span>
-                      ))}
+                  {/* Actions Bar */}
+                  <div className="flex items-center justify-between gap-3 flex-wrap">
+                    <div className="flex items-center gap-3.5 flex-wrap">
+                      {/* Primary Link (Live Demo / APK Download / Site) */}
+                      <a
+                        href={project.primaryLink.url}
+                        target={project.primaryLink.url.startsWith("#") ? "_self" : "_blank"}
+                        rel="noreferrer"
+                        download={project.primaryLink.isDownload}
+                        className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#00ff99] hover:underline"
+                      >
+                        {project.primaryLink.isDownload ? (
+                          <Download className="w-4 h-4" />
+                        ) : (
+                          <ArrowUpRight className="w-4 h-4" />
+                        )}
+                        <span>{project.primaryLink.label}</span>
+                      </a>
+
+                      {/* View Case Study / Details Button */}
+                      <button
+                        onClick={() => setActiveCaseStudyId(project.id)}
+                        className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-white/70 hover:text-white transition-colors cursor-pointer group/btn"
+                      >
+                        <FileText className="w-3.5 h-3.5 text-[#00ff99] group-hover/btn:translate-x-0.5 transition-transform" />
+                        <span>Case Study</span>
+                      </button>
                     </div>
 
-                    {/* Actions Bar */}
-                    <div className="flex items-center justify-between gap-3 flex-wrap">
-                      <div className="flex items-center gap-3.5 flex-wrap">
-                        {/* Primary Link (Live Demo / APK Download / Site) */}
-                        <a
-                          href={project.primaryLink.url}
-                          target={project.primaryLink.url.startsWith("#") ? "_self" : "_blank"}
-                          rel="noreferrer"
-                          download={project.primaryLink.isDownload}
-                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#00ff99] hover:underline"
-                        >
-                          {project.primaryLink.isDownload ? (
-                            <Download className="w-4 h-4" />
-                          ) : (
-                            <ArrowUpRight className="w-4 h-4" />
-                          )}
-                          <span>{project.primaryLink.label}</span>
-                        </a>
-
-                        {/* View Case Study / Details Button */}
-                        <button
-                          onClick={() => setActiveCaseStudyId(project.id)}
-                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-white/70 hover:text-white transition-colors cursor-pointer group/btn"
-                        >
-                          <FileText className="w-3.5 h-3.5 text-[#00ff99] group-hover/btn:translate-x-0.5 transition-transform" />
-                          <span>Case Study</span>
-                        </button>
-                      </div>
-
-                      {/* GitHub Link */}
-                      {project.githubUrl && (
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="w-8 h-8 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] flex items-center justify-center text-white/80 hover:text-white transition-colors"
-                          aria-label="GitHub Source Code"
-                          title="View GitHub Source"
-                        >
-                          <GithubIcon className="w-4 h-4" />
-                        </a>
-                      )}
-                    </div>
+                    {/* GitHub Link */}
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-8 h-8 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] flex items-center justify-center text-white/80 hover:text-white transition-colors"
+                        aria-label="GitHub Source Code"
+                        title="View GitHub Source"
+                      >
+                        <GithubIcon className="w-4 h-4" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
 
@@ -705,8 +768,236 @@ export function Projects3D() {
               </div>
             )}
 
+            {/* LEXORA DETAILED CASE STUDY */}
+            {activeProject.id === "lexora" && (
+              <div className="space-y-8 text-white/80 text-xs sm:text-sm">
+                {/* 1. Problem & 2. Solution Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08]">
+                    <div className="text-xs font-mono uppercase tracking-wider text-rose-400 font-semibold mb-2 flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
+                      1. The Problem: Ad Fatigue &amp; Telemetry
+                    </div>
+                    <p className="text-white/70 leading-relaxed font-normal">
+                      Most modern mobile word games have degraded into vehicles for intrusive full-screen video ads, aggressive telemetry tracking, and constant network requirements. Players are forced into dark patterns and noisy popups rather than enjoying pure cognitive deduction.
+                    </p>
+                  </div>
+
+                  <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08]">
+                    <div className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold mb-2 flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                      2. The Lexora Solution: Luxury Offline Craft
+                    </div>
+                    <p className="text-white/70 leading-relaxed font-normal">
+                      Lexora restores elegance and focus to daily word deduction. Inspired by classical typography restraint and modern dark-glass UI, it delivers a calming, highly polished mobile experience where every player worldwide receives the exact same daily challenge without sending a single byte over the network.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Key Architectural Highlights */}
+                <div className="p-5 sm:p-6 rounded-2xl bg-[#070914] border border-white/[0.08] space-y-4">
+                  <div className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold flex items-center gap-2">
+                    <Cpu className="w-4 h-4 text-amber-400" />
+                    <span>Key Architectural Highlights</span>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
+                    <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-2">
+                      <div className="text-xs font-bold text-white flex items-center justify-between">
+                        <span>100% Offline Engine</span>
+                        <span className="text-[10px] font-mono text-amber-400">O(1) SET</span>
+                      </div>
+                      <p className="text-[11px] text-white/60 leading-relaxed">
+                        Bundles 12,947 accepted vocabulary words in a hashed Set for instantaneous lookups. Curates 2,311 canonical solutions spanning 6.3+ years, synchronized deterministically at 00:00 UTC with zero server dependencies.
+                      </p>
+                    </div>
+
+                    <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-2">
+                      <div className="text-xs font-bold text-white flex items-center justify-between">
+                        <span>Dual-Session Isolation</span>
+                        <span className="text-[10px] font-mono text-emerald-400">STATE ISOLATION</span>
+                      </div>
+                      <p className="text-[11px] text-white/60 leading-relaxed">
+                        Isolated state-machine completely separating the competitive Daily Puzzle from unlimited Practice Mode. State, guesses, and persistence run in dedicated namespaces with zero streak corruption.
+                      </p>
+                    </div>
+
+                    <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-2">
+                      <div className="text-xs font-bold text-white flex items-center justify-between">
+                        <span>55% Package Reduction</span>
+                        <span className="text-[10px] font-mono text-cyan-400">80.8MB → 36.15MB</span>
+                      </div>
+                      <p className="text-[11px] text-white/60 leading-relaxed">
+                        Optimized Android release size using Hermes bytecode compilation, ProGuard/R8 code shrinking and resource stripping, and ABI filtering restricted to arm64-v8a and armeabi-v7a.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Notifications & VAPT Security */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-2.5">
+                    <div className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold flex items-center gap-2">
+                      <Smartphone className="w-4 h-4 text-amber-400" />
+                      <span>Smart Daytime Notification Scheduler</span>
+                    </div>
+                    <ul className="space-y-2 text-xs text-white/70">
+                      <li className="flex items-start gap-2">
+                        <span className="text-amber-400 font-mono mt-0.5">▹</span>
+                        <span>
+                          <strong className="text-white">Android 13+ Permissions:</strong> Utilizes runtime permission models with gentle educational prompts.
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-amber-400 font-mono mt-0.5">▹</span>
+                        <span>
+                          <strong className="text-white">4-Hour Windows:</strong> Dynamically calculates daytime reminder windows (9 AM, 1 PM, 5 PM, 9 PM) only if the current day puzzle is unsolved.
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-amber-400 font-mono mt-0.5">▹</span>
+                        <span>
+                          <strong className="text-white">Instant Cancellation:</strong> Idempotent registration with automatic hooks that cancel alerts the millisecond today&apos;s puzzle is completed.
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-2.5">
+                    <div className="text-xs font-mono uppercase tracking-wider text-[#00ff99] font-semibold flex items-center gap-2">
+                      <ShieldCheck className="w-4 h-4 text-[#00ff99]" />
+                      <span>VAPT Security &amp; Data Hardening</span>
+                    </div>
+                    <ul className="space-y-2 text-xs text-white/70">
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#00ff99] font-mono mt-0.5">▹</span>
+                        <span>
+                          <strong className="text-white">Prototype Pollution Defense:</strong> Persistence engine explicitly strips <code className="text-amber-300">__proto__</code> and <code className="text-amber-300">constructor</code> attacks.
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#00ff99] font-mono mt-0.5">▹</span>
+                        <span>
+                          <strong className="text-white">Input Buffer Clamping:</strong> Strict 5-character buffer clamps block overflow, character injection, and malformed state payloads.
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#00ff99] font-mono mt-0.5">▹</span>
+                        <span>
+                          <strong className="text-white">Privacy-Preserving Share:</strong> Social result cards strictly mask secret words and letter guesses to maintain spoiler safety and zero privacy leaks.
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Design System & Craftsmanship */}
+                <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-3">
+                  <div className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-amber-400" />
+                    <span>Design System &amp; Human-Interface Craftsmanship</span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                    <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                      <div className="font-bold text-white mb-1">WCAG 2.1 AAA Contrast</div>
+                      <p className="text-[11px] text-white/60 leading-relaxed">
+                        Deep espresso (<code className="text-amber-300">#1A100A</code>), dark surface (<code className="text-amber-300">#292019</code>), warm amber (<code className="text-amber-400">#FF7A00</code>), and ivory text (<code className="text-amber-100">#FFF8F0</code>) achieving an ultra-crisp 17.5:1 contrast ratio.
+                      </p>
+                    </div>
+                    <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                      <div className="font-bold text-white mb-1">Optical Centering</div>
+                      <p className="text-[11px] text-white/60 leading-relaxed">
+                        Absolute-layer header architecture keeping the LEXORA wordmark centered regardless of asymmetrical flanking buttons, with responsive scaling for viewports &lt;380dp.
+                      </p>
+                    </div>
+                    <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                      <div className="font-bold text-white mb-1">Zero-Jitter Tile Geometry</div>
+                      <p className="text-[11px] text-white/60 leading-relaxed">
+                        Uniform 1.5px border widths across all empty, active typing, and evaluated states, eliminating layout jitter during fast typing. Standalone • ENTER button with haptics.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Verification & Testing Suite Table */}
+                <div className="p-5 rounded-2xl bg-[#070914] border border-white/[0.08] space-y-3">
+                  <div className="text-xs font-mono uppercase tracking-wider text-emerald-400 font-semibold flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                    <span>Automated Verification &amp; Testing Suite</span>
+                  </div>
+
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-xs font-mono">
+                      <thead>
+                        <tr className="border-b border-white/[0.08] text-white/50">
+                          <th className="pb-2 font-medium">Metric / Check</th>
+                          <th className="pb-2 font-medium">Tooling</th>
+                          <th className="pb-2 font-medium text-right">Result</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-white/[0.04] text-white/80">
+                        <tr>
+                          <td className="py-2 text-white">Automated Unit &amp; Regression Tests</td>
+                          <td className="py-2 text-white/60">Node test runner (tsx --test)</td>
+                          <td className="py-2 text-right text-emerald-400 font-bold">152 / 152 Passing (21 suites)</td>
+                        </tr>
+                        <tr>
+                          <td className="py-2 text-white">Design System &amp; Contrast Suite</td>
+                          <td className="py-2 text-white/60">Custom WCAG automated suite</td>
+                          <td className="py-2 text-right text-emerald-400 font-bold">10 / 10 Passing (AAA Compliant)</td>
+                        </tr>
+                        <tr>
+                          <td className="py-2 text-white">Static Type Safety</td>
+                          <td className="py-2 text-white/60">TypeScript 5.8 (Strict Mode)</td>
+                          <td className="py-2 text-right text-emerald-400 font-bold">0 Errors</td>
+                        </tr>
+                        <tr>
+                          <td className="py-2 text-white">Ecosystem Health &amp; Dependencies</td>
+                          <td className="py-2 text-white/60">Expo Doctor</td>
+                          <td className="py-2 text-right text-emerald-400 font-bold">21 / 21 Checks Passed</td>
+                        </tr>
+                        <tr>
+                          <td className="py-2 text-white">Historical Dictionary Compatibility</td>
+                          <td className="py-2 text-white/60">Python verification engine</td>
+                          <td className="py-2 text-right text-emerald-400 font-bold">100% Validated (Days 0..175+)</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Tech Stack */}
+                <div className="pt-4 border-t border-white/[0.08] space-y-3">
+                  <div className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">
+                    Full Tech Stack
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "React Native",
+                      "Expo SDK 52",
+                      "TypeScript 5.8",
+                      "Android",
+                      "Hermes Engine",
+                      "ProGuard / R8",
+                      "AsyncStorage",
+                      "Expo Notifications",
+                      "Node Test Runner",
+                      "WCAG 2.1 AAA"
+                    ].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-white/80"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* OTHER PROJECTS INSPECTION FALLBACK */}
-            {activeProject.id !== "jobhunter" && (
+            {activeProject.id !== "jobhunter" && activeProject.id !== "lexora" && (
               <div className="space-y-6 text-white/80 text-xs sm:text-sm">
                 <p className="text-sm text-white/70 leading-relaxed font-normal">
                   {activeProject.description}
