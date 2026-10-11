@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Gradient: Obsidian Space -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d26"/>
+      <stop offset="100%" stop-color="#000319"/>
+    </linearGradient>
+
+    <!-- Border Gradient: Neon Emerald to Subtle Glass -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ff99" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#00ff99" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#00ffff" stop-opacity="0.4"/>
+    </linearGradient>
+
+    <!-- Emerald Dot Glow Filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <radialGradient id="dotGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ff99" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#00ff99" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background Base with Squircle Border -->
+  <rect x="8" y="8" width="496" height="496" rx="120" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="14"/>
+
+  <!-- Subtle Ambient Glow in Corner -->
+  <circle cx="150" cy="150" r="160" fill="#00ff99" opacity="0.07"/>
+
+  <!-- Ambient Glow Behind Emerald Dot -->
+  <circle cx="372" cy="354" r="80" fill="url(#dotGlow)"/>
+
+  <!-- Geometric Bold Monogram: 'N' in Pure Crisp White -->
+  <path d="M 130 140
+           L 186 140
+           L 276 288
+           L 276 140
+           L 330 140
+           L 330 372
+           L 274 372
+           L 184 224
+           L 184 372
+           L 130 372
+           Z"
+        fill="#FFFFFF"/>
+
+  <!-- Signature Emerald Dot: '.' -->
+  <circle cx="372" cy="354" r="28" fill="#00ff99" opacity="0.35"/>
+  <circle cx="372" cy="354" r="20" fill="#00ff99" filter="url(#glow)"/>
+</svg>
